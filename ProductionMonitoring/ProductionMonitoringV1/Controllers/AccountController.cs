@@ -31,7 +31,15 @@ namespace ProductionMonitoringV1.Controllers
         }
         public ActionResult CreateUser()
         {
-            return View();
+            var _roles = _context.Roles.ToList();
+
+            var userViewModel = new CreateUserViewModel
+            {
+                User = new User(),
+                Roles = _roles,
+            };
+
+            return View(userViewModel);
         }
 
         [HttpPost]
